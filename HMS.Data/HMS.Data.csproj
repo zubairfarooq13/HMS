@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F92372C-C5BD-4EF0-91D0-A7F9BB6AD27E}</ProjectGuid>
+    <ProjectGuid>{FBDD0898-C8E3-4C68-AC78-08D4BE671636}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HMS.Entities</RootNamespace>
-    <AssemblyName>HMS.Entities</AssemblyName>
+    <RootNamespace>HMS.Data</RootNamespace>
+    <AssemblyName>HMS.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -54,16 +54,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accomodation.cs" />
-    <Compile Include="AccomodationPackage.cs" />
-    <Compile Include="AccomodationType.cs" />
-    <Compile Include="Booking.cs" />
-    <Compile Include="HMSUser.cs" />
+    <Compile Include="HMSContext.cs" />
+    <Compile Include="Migrations\201908231023438_addEntities.cs" />
+    <Compile Include="Migrations\201908231023438_addEntities.Designer.cs">
+      <DependentUpon>201908231023438_addEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908231122481_userEntities.cs" />
+    <Compile Include="Migrations\201908231122481_userEntities.Designer.cs">
+      <DependentUpon>201908231122481_userEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HMS.Entities\HMS.Entities.csproj">
+      <Project>{1F92372C-C5BD-4EF0-91D0-A7F9BB6AD27E}</Project>
+      <Name>HMS.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201908231023438_addEntities.resx">
+      <DependentUpon>201908231023438_addEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908231122481_userEntities.resx">
+      <DependentUpon>201908231122481_userEntities.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
